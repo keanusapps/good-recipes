@@ -349,10 +349,11 @@ function AIView({ t, af, lang, setView, setCustom }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt: `You are a baker. Create a recipe for "${input}" in ${LANG_NAMES[lang]}.
-Return ONLY raw JSON, no markdown:
-{"name":"...","category":"...","quick":{"time":"...","ingredients":["max 6 items"],"steps":["max 4 steps"]},"hard":{"time":"...","ingredients":["max 8 items"],"steps":["max 6 steps"]}}
-Keep each ingredient and step SHORT (max 10 words each). All text in ${LANG_NAMES[lang]}.`
+         prompt: `You are a professional baker. Create a complete baking recipe for "${input}" in ${LANG_NAMES[lang]}.
+Return ONLY a valid JSON object – no markdown, no backticks, just raw JSON:
+{"name":"...","category":"...","quick":{"time":"...","ingredients":["..."],"steps":["..."]},"hard":{"time":"...","ingredients":["..."],"steps":["..."]}}
+Quick: beginner-friendly, 5-6 ingredients, 4-5 steps. Pro: detailed, 9-12 ingredients, 7-9 steps.
+All text must be in ${LANG_NAMES[lang]}.`
         })
       });
 const data = await res.json();
