@@ -355,16 +355,19 @@ Return ONLY raw JSON, no markdown:
 Keep each ingredient and step SHORT (max 10 words each). All text in ${LANG_NAMES[lang]}.`
         })
       });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-const clean = data.text
-  .replace(/```json|```/g, "")
-  .replace(/[\u0000-\u001F\u007F-\u009F]/g, " ")
-  .trim();
-setResult(JSON.parse(clean));
-    } catch(e) { setError(t.aiErr); }
-    finally { setLoading(false); }
-  };
+const data = await res.json();
+console.log("RAW DATA:", data);
+if (data.error) throw new Error(data.error);
+try {
+  const clean = data.text.replace(/```json|```/g, "").trim();
+  console.log("CLEAN:", clean);
+  const parsed = JSON.parse(clean);
+  console.log("PARSED:", parsed);
+  setResult(parsed);
+} catch(parseErr) {
+  console.log("PARSE ERROR:", parseErr.message);
+  throw parseErr;
+}
 
   const saveIt = () => {
     if(!result||saved) return;
