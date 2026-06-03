@@ -356,16 +356,12 @@ Keep each ingredient and step SHORT (max 10 words each). All text in ${LANG_NAME
         })
       });
 const data = await res.json();
-console.log("RAW DATA:", data);
 if (data.error) throw new Error(data.error);
 try {
   const clean = data.text.replace(/```json|```/g, "").trim();
-  console.log("CLEAN:", clean);
   const parsed = JSON.parse(clean);
-  console.log("PARSED:", parsed);
   setResult(parsed);
 } catch(parseErr) {
-  console.log("PARSE ERROR:", parseErr.message);
   throw parseErr;
 }
 
