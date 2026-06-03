@@ -357,7 +357,11 @@ Keep each ingredient and step SHORT (max 10 words each). All text in ${LANG_NAME
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
-      setResult(JSON.parse(data.text.replace(/```json|```/g, "").trim()));
+const clean = data.text
+  .replace(/```json|```/g, "")
+  .replace(/[\u0000-\u001F\u007F-\u009F]/g, " ")
+  .trim();
+setResult(JSON.parse(clean));
     } catch(e) { setError(t.aiErr); }
     finally { setLoading(false); }
   };
