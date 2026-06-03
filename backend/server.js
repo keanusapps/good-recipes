@@ -37,7 +37,7 @@ app.post("/api/generate-recipe", async (req, res) => {
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.7,
-            maxOutputTokens: 1024,
+            maxOutputTokens: 2048,
           },
         }),
       }
