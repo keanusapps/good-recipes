@@ -489,4 +489,4 @@ function Block({title,children}){return(<div style={{background:"rgba(255,255,25
 function Row({children,last,align="center"}){return(<div style={{display:"flex",alignItems:align,gap:"12px",padding:"9px 0",borderBottom:last?"none":"1px solid rgba(255,255,255,0.1)",color:"#FFF3E0",fontSize:"0.96rem"}}>{children}</div>);}
 function Dot(){return(<span style={{width:"8px",height:"8px",borderRadius:"50%",background:"#FFD700",flexShrink:0}}/>);}
 function Num({children}){return(<span style={{background:"#FFD700",color:"#8B3000",borderRadius:"50%",width:"28px",height:"28px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.88rem",flexShrink:0}}>{children}</span>);}
-function Muted({children}){return(<div style={{color:"rgba(255,243,224,0.4)",fontSize:"0.9rem",textAlign:"center",padding:"12px 0"}}>{children}</div>);}```
+function Muted({children}){return(<div style={{color:"rgba(255,243,224,0.4)",fontSize:"0.9rem",textAlign:"center",padding:"12px 0"}}>{children}</div>);}
